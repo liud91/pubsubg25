@@ -11,9 +11,9 @@ import events.EventType;
  */
 public abstract class AbstractStrategy {
 	private StrategyName strategyName;
-	private EventType defaultEventType = EventType.TypeC;
-	private String defaultHeader = "Default Header";
-	private String defaultBody = "Default Body";
+	protected EventType defaultEventType = EventType.TypeC;
+	protected String defaultHeader = "Default Header";
+	protected String defaultBody = "Default Body";
 	
 	
 	public AbstractStrategy(StrategyName strategyName) {
@@ -24,9 +24,9 @@ public abstract class AbstractStrategy {
 		return this.strategyName;
 	}
 	
-	public void doPublish(AbstractEvent event, int publisherId);
+	public abstract void doPublish(AbstractEvent event, int publisherId);
 	
-	public void doPublish(int publisherId);
+	public abstract void doPublish(int publisherId);
 	
 }
 

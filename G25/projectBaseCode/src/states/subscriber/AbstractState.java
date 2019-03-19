@@ -13,7 +13,7 @@ public abstract class AbstractState {
 		this.stateName = stateName;
 	}
 	
-	public void handleEvent(AbstractEvent event, String channelName);
+	public abstract void handleEvent(AbstractEvent event, String channelName);
 	
 	protected StateName getStateName() {
 		return this.stateName;

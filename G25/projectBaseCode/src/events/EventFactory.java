@@ -20,13 +20,14 @@ public class EventFactory {
 	 * @return
 	 */
 	public static AbstractEvent createEvent(EventType eventType, int eventPublisherId, EventMessage payload) {
+        long eventId = EventIDMaker.getNewEventID();
         switch(eventType) {
             case TypeA:
-                return new EventTypeA(eventType, eventPublisherId, payload);
+                return new EventTypeA(eventId, eventPublisherId, payload);
             case TypeB:
-                return new EventTypeB(eventType, eventPublisherId, payload);
+                return new EventTypeB(eventId, eventPublisherId, payload);
             default:
-                return new EventTypeC(eventType, eventPublisherId, payload); 
+                return new EventTypeC(eventId, eventPublisherId, payload); 
             }
 		return null;
 	}

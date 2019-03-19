@@ -8,7 +8,7 @@ package pubSubServer;
  * it's also the only class that can do so
  */
 public class ChannelCreator {
-	private static ChannelPoolManager instance = null;
+	private static ChannelCreator instance = null;
 	private ChannelPoolManager cpm = null;
 	
 	private ChannelCreator() {

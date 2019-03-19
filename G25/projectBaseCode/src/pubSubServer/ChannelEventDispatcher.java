@@ -12,7 +12,7 @@ import publishers.AbstractPublisher;
  * Class providing an interface for {@link AbstractPublisher} objects to cover their publishing needs 
  */
 public class ChannelEventDispatcher {
-    private static ChannelPoolManager instance = null;
+    private static ChannelEventDispatcher instance = null;
 	private ChannelPoolManager cpManager;
 	
 	private ChannelEventDispatcher() {
@@ -21,7 +21,7 @@ public class ChannelEventDispatcher {
 	
 	public static ChannelEventDispatcher getInstance() {
 		if(instance == null) {
-            instance = new ChannelDiscovery();
+            instance = new ChannelEventDispatcher();
         }
         return instance;
 	}
