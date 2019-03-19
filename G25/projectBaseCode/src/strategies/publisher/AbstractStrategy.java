@@ -1,9 +1,6 @@
 package strategies.publisher;
-import events.EventFactory;
-import pubSubServer.ChannelEventDispatcher;
-import pubSubServer.ChannelPoolManager;
-import events.EventMessage;
 import events.EventType;
+import events.AbstractEvent;
 
 /**
  * @author kkontog, ktsiouni, mgrigori 

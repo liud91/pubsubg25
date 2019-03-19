@@ -1,4 +1,9 @@
 package strategies.publisher;
+import events.EventFactory;
+import pubSubServer.ChannelEventDispatcher;
+import pubSubServer.ChannelPoolManager;
+import events.EventMessage;
+import events.AbstractEvent;
 
 
 class BStrategy extends AbstractStrategy {

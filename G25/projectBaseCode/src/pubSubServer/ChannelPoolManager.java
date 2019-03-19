@@ -35,7 +35,7 @@ public class ChannelPoolManager {
 		}
 	}
 
-	protected static ChannelPoolManager getInstance() {
+	public static ChannelPoolManager getInstance() {
 
 		if (instance == null)
 			instance = new ChannelPoolManager();
@@ -72,7 +72,7 @@ public class ChannelPoolManager {
 	 * can be used to list all the Channels available in the PubSubServer
 	 * @return a list of type {@link AbstractChannel}
 	 */
-	protected List<AbstractChannel> listChannels() {
+	public List<AbstractChannel> listChannels() {
 		return channelList;
 	}
 

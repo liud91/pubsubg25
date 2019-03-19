@@ -1,5 +1,5 @@
 package states.subscriber;
-
+import events.AbstractEvent;
 
 class AState extends AbstractState {
 
