@@ -9,7 +9,7 @@ public abstract class AbstractState {
 	private StateName stateName;
 	
 	
-	public AbstractEvent(StateName stateName) {
+	public AbstractState(StateName stateName) {
 		this.stateName = stateName;
 	}
 	

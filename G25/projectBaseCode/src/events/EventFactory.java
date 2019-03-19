@@ -27,6 +27,7 @@ public class EventFactory {
                 return new EventTypeB(eventType, eventPublisherId, payload);
             default:
                 return new EventTypeC(eventType, eventPublisherId, payload); 
+            }
 		return null;
 	}
 	
