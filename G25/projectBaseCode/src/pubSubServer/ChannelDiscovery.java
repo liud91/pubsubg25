@@ -33,8 +33,12 @@ public class ChannelDiscovery {
 	 * currently in the PubSubServer 
 	 */
 	public List<AbstractChannel> listChannels() {
-		return cpm.getInstance().listChannels();
+		return cpm.listChannels();
 	}
+	
+	public List<String> listChannelNames() {
+        return cpm.listChannelNames();
+    }
 
 	/**
 	 * @param channelName the topic/name of the looked-up channel

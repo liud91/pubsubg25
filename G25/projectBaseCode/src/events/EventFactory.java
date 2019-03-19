@@ -26,7 +26,7 @@ public class EventFactory {
                 return new EventTypeA(eventId, eventPublisherId, payload);
             case TypeB:
                 return new EventTypeB(eventId, eventPublisherId, payload);
-            default:
+            case TypeC:
                 return new EventTypeC(eventId, eventPublisherId, payload); 
             }
 		return null;

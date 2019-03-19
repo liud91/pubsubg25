@@ -13,10 +13,10 @@ import publishers.AbstractPublisher;
  */
 public class ChannelEventDispatcher {
     private static ChannelEventDispatcher instance = null;
-	private ChannelPoolManager cpManager;
+	private ChannelDiscovery channelDiscovery;
 	
 	private ChannelEventDispatcher() {
-        cpManager = ChannelPoolManager.getInstance();
+        channelDiscovery = ChannelDiscovery.getInstance();
 	}
 	
 	public static ChannelEventDispatcher getInstance() {
@@ -35,7 +35,7 @@ public class ChannelEventDispatcher {
 	public void postEvent(AbstractEvent event, List<String> listOfChannels) {
 		
 		for(String channelName : listOfChannels) {
-			AbstractChannel channel = cpManager.findChannel(channelName);
+			AbstractChannel channel = channelDiscovery.findChannel(channelName);
 			if(channel == null) {
 				channel = ChannelCreator.getInstance().addChannel(channelName);
 			}

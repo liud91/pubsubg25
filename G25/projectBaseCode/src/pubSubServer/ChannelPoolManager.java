@@ -22,6 +22,7 @@ public class ChannelPoolManager {
 	private static ChannelPoolManager instance = null;
 	private Map<String, AbstractChannel> channelsMap = new HashMap<String, AbstractChannel>();
 	private List<AbstractChannel> channelList = new ArrayList<AbstractChannel>();
+	private List<String> channelNameList = new ArrayList<String>();
 
 	private ChannelPoolManager() {
 		try {
@@ -35,7 +36,7 @@ public class ChannelPoolManager {
 		}
 	}
 
-	public static ChannelPoolManager getInstance() {
+	protected static ChannelPoolManager getInstance() {
 
 		if (instance == null)
 			instance = new ChannelPoolManager();
@@ -53,6 +54,7 @@ public class ChannelPoolManager {
 		Channel ch = new Channel(channelName);
 		channelsMap.put(channelName, ch);
 		channelList.add(ch);
+		channelNameList.add(channelName);
 		return ch;
 	}
 
@@ -65,6 +67,7 @@ public class ChannelPoolManager {
 
 		channelList.remove(channelsMap.get(channelName));
 		channelsMap.remove(channelName);
+		channelNameList.remove(channelName);
 	}
 
 	
@@ -72,7 +75,7 @@ public class ChannelPoolManager {
 	 * can be used to list all the Channels available in the PubSubServer
 	 * @return a list of type {@link AbstractChannel}
 	 */
-	public List<AbstractChannel> listChannels() {
+	protected List<AbstractChannel> listChannels() {
 		return channelList;
 	}
 
@@ -94,5 +97,9 @@ public class ChannelPoolManager {
 	protected Map<String, AbstractChannel> getChannelsMap() {
 		return channelsMap;
 	}
+	
+	protected List<String> listChannelNames(){
+        return channelNameList;
+    }
 	
 }
