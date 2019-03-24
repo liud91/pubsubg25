@@ -25,10 +25,18 @@ public class SubscriberFactory {
 		AbstractSubscriber CSA = null;
 		switch (subscriberType) {
 			case alpha : 
-				return CSA;
-			default:
-				return CSA;
+				CSA = new ConcreteSubscriberA();
+				CSA.setState(stateName);
+				break;
+			case beta : 
+				CSA = new ConcreteSubscriberB();
+				CSA.setState(stateName);
+				break;
+			case gamma :
+				CSA = new ConcreteSubscriberG();
+				CSA.setState(stateName);
 		}
+		return CSA;
 	}
 	
 }

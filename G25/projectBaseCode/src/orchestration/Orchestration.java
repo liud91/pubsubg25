@@ -29,6 +29,7 @@ public class Orchestration {
 		try {
 			listOfPublishers = testHarness.createPublishers();
 			listOfSubscribers = testHarness.createSubscribers();
+
 			
 			List<AbstractChannel> channels = ChannelDiscovery.getInstance().listChannels();
 			//For demonstration purposes only
@@ -95,8 +96,9 @@ public class Orchestration {
 			String StateConfigLine = StateBufferedReader.readLine();
 			String[] StateConfigArray = StateConfigLine.split("\t");
 			int[] StateConfigIntArray = new int[2];
-			for(int i = 0; i < StateConfigArray.length; i++)
+			for(int i = 0; i < StateConfigArray.length; i++) {
 				StateConfigIntArray[i] = Integer.parseInt(StateConfigArray[i]);
+			}
 			newSub = SubscriberFactory.createSubscriber(
 					SubscriberType.values()[StateConfigIntArray[0]], 
 					StateName.values()[StateConfigIntArray[1]]);
