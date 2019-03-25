@@ -72,20 +72,16 @@ public class Orchestration {
 
 	
 	private List<AbstractPublisher> createPublishers() throws IOException{
+        StrategyReader sr = new StrategyReader("Strategies.str");
+        int[][] strategyData = sr.getData();
 		List<AbstractPublisher> listOfPublishers = new ArrayList<>();
 		AbstractPublisher newPub;
-		BufferedReader StrategyBufferedReader = new BufferedReader(new FileReader(new File("Strategies.str")));
-		while(StrategyBufferedReader.ready()) {
-			String PublisherConfigLine = StrategyBufferedReader.readLine();
-			String[] PublisherConfigArray = PublisherConfigLine.split("\t");
-			int[] PublisherConfigIntArray = new int[2];
-			for(int i = 0; i < PublisherConfigArray.length; i++)
-				PublisherConfigIntArray[i] = Integer.parseInt(PublisherConfigArray[i]);
-			newPub = PublisherFactory.createPublisher(
-					PublisherType.values()[PublisherConfigIntArray[0]],
-					StrategyName.values()[PublisherConfigIntArray[1]]);
-			listOfPublishers.add(newPub);
-		}
+        for(int i = 0; i < strategyData.length; i++) {
+            newPub = PublisherFactory.createPublisher(
+                    PublisherType.values()[Integer.parseInt(strategyReader[i][0])],
+                    StrategyName.values()[Integer.parseInt(strategyReader[i][1])]);
+            listOfPublishers.add(newPub);
+        }
 		StrategyBufferedReader.close();
 		return listOfPublishers;
 	}
