@@ -1,6 +1,7 @@
 package pubSubServer;
 
 import java.io.BufferedReader;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import reader.ChannelReader;
 
 
 /**
@@ -25,14 +28,15 @@ public class ChannelPoolManager {
 	private List<String> channelNameList = new ArrayList<String>();
 
 	private ChannelPoolManager() {
-		try {
-		BufferedReader channelListReader = new BufferedReader(new FileReader(new File("Channels.chl")));
-		while(channelListReader.ready())
-			addChannel(channelListReader.readLine());
-		channelListReader.close();
-		}catch(IOException ioe) {
+		ChannelReader cr = new ChannelReader("Channels.chl");
+		List<String> channelData = cr.getData();
+		if (channelData.equals(null)) {
 			System.out.println("Error with loading from file, creating one no_theme_channel");
 			addChannel("no_theme");
+			return;
+		}
+		for (String channelName : channelData) {
+			addChannel(channelName);
 		}
 	}
 

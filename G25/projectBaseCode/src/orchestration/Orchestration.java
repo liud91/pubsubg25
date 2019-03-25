@@ -31,47 +31,21 @@ public class Orchestration {
 		List<AbstractPublisher> listOfPublishers = new ArrayList<>();
 		List<AbstractSubscriber> listOfSubscribers = new ArrayList<>();
 		Orchestration testHarness = new Orchestration();
-		try {
-			listOfPublishers = testHarness.createPublishers();
-			listOfSubscribers = testHarness.createSubscribers();
+		
+		listOfPublishers = testHarness.createPublishers();
+		listOfSubscribers = testHarness.createSubscribers();
 
-			
-			List<AbstractChannel> channels = ChannelDiscovery.getInstance().listChannels();
-			//For demonstration purposes only
-			try {
-			BufferedReader initialChannels = new BufferedReader(new FileReader(new File("Channels.chl")));
-			List<String> channelList = new ArrayList<String>();
-			String line = "";
-			while((line = initialChannels.readLine()) != null )
-				channelList.add(line);
-			int subscriberIndex = 0;
-			for(AbstractSubscriber subscriber : listOfSubscribers) {
-				subscriber.subscribe(channelList.get(subscriberIndex%channelList.size()));
-				subscriberIndex++;
-			}
-			initialChannels.close();
-			}catch(IOException ioe) {
-				System.out.println("Loading Channels from file failed proceeding with random selection");
-				for(AbstractSubscriber subscriber : listOfSubscribers) {
-					//int index = (int) Math.round((Math.random()*10))/3;
-					int index = 0;
-					SubscriptionManager.getInstance().subscribe(channels.get(index).getChannelTopic(), subscriber);
-				}
-			}
-			for(AbstractPublisher publisher : listOfPublishers) {
-				publisher.publish();
-			}
-			
-		} catch (IOException ioe) {
-			System.out.println(ioe.getMessage());
-			System.out.println("Will now terminate");
-			return;
+		
+		List<AbstractChannel> channels = ChannelDiscovery.getInstance().listChannels();
+		//For demonstration purposes only
+		int subscriberIndex = 0;
+		for(AbstractSubscriber subscriber : listOfSubscribers) {
+			subscriber.subscribe(channels.get(subscriberIndex%channels.size()).getChannelTopic());
+			subscriberIndex++;
 		}
 		for(AbstractPublisher publisher : listOfPublishers) {
 			publisher.publish();
 		}
-		
-		
 	}
 
 	
