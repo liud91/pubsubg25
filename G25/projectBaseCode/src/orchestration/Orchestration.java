@@ -19,6 +19,10 @@ import strategies.publisher.StrategyName;
 import subscribers.AbstractSubscriber;
 import subscribers.SubscriberFactory;
 import subscribers.SubscriberType;
+import reader.AbstractReader;
+import reader.ChannelReader;
+import reader.StatesReader;
+import reader.StrategiesReader;
 
 public class Orchestration {
 
@@ -71,41 +75,31 @@ public class Orchestration {
 	}
 
 	
-	private List<AbstractPublisher> createPublishers() throws IOException{
-        StrategyReader sr = new StrategyReader("Strategies.str");
-        int[][] strategyData = sr.getData();
+	private List<AbstractPublisher> createPublishers() {
+        StrategiesReader sr = new StrategiesReader("Strategies.str");
+        List<int[]> strategyData = sr.getData();
 		List<AbstractPublisher> listOfPublishers = new ArrayList<>();
 		AbstractPublisher newPub;
-        for(int i = 0; i < strategyData.length; i++) {
+        for(int i = 0; i < strategyData.size(); i++) {
             newPub = PublisherFactory.createPublisher(
-                    PublisherType.values()[Integer.parseInt(strategyReader[i][0])],
-                    StrategyName.values()[Integer.parseInt(strategyReader[i][1])]);
+                    PublisherType.values()[strategyData.get(i)[0]],
+                    StrategyName.values()[strategyData.get(i)[1]]);
             listOfPublishers.add(newPub);
         }
-		StrategyBufferedReader.close();
 		return listOfPublishers;
 	}
 	
-	private List<AbstractSubscriber> createSubscribers() throws IOException{
+	private List<AbstractSubscriber> createSubscribers() {
+        StatesReader sr = new StatesReader("States.sts");
+        List<int[]> stateData = sr.getData();
 		List<AbstractSubscriber> listOfSubscribers = new ArrayList<>();
 		AbstractSubscriber newSub;
-		BufferedReader StateBufferedReader = new BufferedReader(new FileReader(new File("States.sts")));
-		while(StateBufferedReader.ready()) {
-			String StateConfigLine = StateBufferedReader.readLine();
-			String[] StateConfigArray = StateConfigLine.split("\t");
-			int[] StateConfigIntArray = new int[2];
-			for(int i = 0; i < StateConfigArray.length; i++) {
-				StateConfigIntArray[i] = Integer.parseInt(StateConfigArray[i]);
-			}
-			newSub = SubscriberFactory.createSubscriber(
-					SubscriberType.values()[StateConfigIntArray[0]], 
-					StateName.values()[StateConfigIntArray[1]]);
-			listOfSubscribers.add(newSub);
-		}
-		StateBufferedReader.close();
+        for(int i = 0; i < stateData.size(); i++) {
+            newSub = SubscriberFactory.createSubscriber(
+                    SubscriberType.values()[stateData.get(i)[0]],
+                    StateName.values()[stateData.get(i)[1]]);
+            listOfSubscribers.add(newSub);
+        }
 		return listOfSubscribers;
-	}
-	
-	
-	
+	}	
 }

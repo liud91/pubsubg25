@@ -1,7 +1,7 @@
-package reader
+package reader;
 
 public class AbstractReader {
-    private fileName;
+    protected String fileName;
     
     public AbstractReader(String fileName) {
         this.fileName = fileName;

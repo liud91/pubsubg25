@@ -1,4 +1,11 @@
-package reader
+package reader;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StatesReader extends AbstractReader {
     
@@ -6,19 +13,24 @@ public class StatesReader extends AbstractReader {
         super(fileName);
     }
     
-    public int[][] getData() {
-        BufferedReader br = new BufferedReader(new FileReader(new File(fileName)));
-        int i = 0;
-        while(br.ready()) {
-			String StateConfigLine = StateBufferedReader.readLine();
-			String[] StateConfigArray = StateConfigLine.split("\t");
-			int[][] StateConfigIntArray = new int[][2];
-			for(int j = 0; j < StateConfigArray.length; j++) {
-				StateConfigIntArray[i][j] = Integer.parseInt(StateConfigArray[j]);
-			}
-			i++;
-        }
-        br.close;
+    public List<int[]> getData() {
+        BufferedReader br;
+        List<int[]> StateConfigIntArray = new ArrayList<int[]>();
+		try {
+			br = new BufferedReader(new FileReader(new File(fileName)));
+			while(br.ready()) {
+				String StateConfigLine = br.readLine();
+				String[] StateConfigArray = StateConfigLine.split("\t");
+				int[] lineData = new int[StateConfigArray.length];
+				for(int j = 0; j < StateConfigArray.length; j++) {
+					lineData[j] = Integer.parseInt(StateConfigArray[j]);
+				}
+				StateConfigIntArray.add(lineData);
+	        }
+			br.close();
+		} catch (IOException e) {
+			StateConfigIntArray = null;
+		}   
         return StateConfigIntArray;
     }
 }
