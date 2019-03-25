@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import pubSubServer.AbstractChannel;
 import pubSubServer.ChannelDiscovery;
 import pubSubServer.SubscriptionManager;
@@ -48,7 +49,8 @@ public class Orchestration {
 			}catch(IOException ioe) {
 				System.out.println("Loading Channels from file failed proceeding with random selection");
 				for(AbstractSubscriber subscriber : listOfSubscribers) {
-					int index = (int) Math.round((Math.random()*10))/3;
+					//int index = (int) Math.round((Math.random()*10))/3;
+					int index = 0;
 					SubscriptionManager.getInstance().subscribe(channels.get(index).getChannelTopic(), subscriber);
 				}
 			}
