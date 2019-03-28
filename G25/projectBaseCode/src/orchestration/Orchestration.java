@@ -36,9 +36,9 @@ public class Orchestration {
 		listOfSubscribers = testHarness.createSubscribers();
 
 		
-		List<AbstractChannel> channels = ChannelDiscovery.getInstance().listChannels();
+		//List<AbstractChannel> channels = ChannelDiscovery.getInstance().listChannels();
 		//For demonstration purposes only
-		int subscriberIndex = 0;
+		/*int subscriberIndex = 0;
 		for(AbstractSubscriber subscriber : listOfSubscribers) {
 			subscriber.subscribe(channels.get(subscriberIndex%channels.size()).getChannelTopic());
 			subscriberIndex++;
@@ -46,6 +46,7 @@ public class Orchestration {
 		for(AbstractPublisher publisher : listOfPublishers) {
 			publisher.publish();
 		}
+		*/
 	}
 
 	
