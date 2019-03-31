@@ -47,12 +47,62 @@ public class Orchestration {
 			publisher.publish();
 		}
 		*/
+		
+		testHarness.runConfigFile("Config.cfg");
+		
+            
 	}
 
+	private void runConfigFile(String fileName) {
+        ConfigReader cr = new ConfigReader(fileName);
+		List<List<String>> instructionList = cr.getData();
+		for (instruction : instructionList) {
+            switch (instruction.get(0)) {
+                case "PUB" :
+                    if (instruction.size() == 5) {
+                        publishEvent(instruction.get(1), instruction.get(2), instruction.get(3), instruction.get(4));
+                    } else {
+                        publishEvent(instruction.get(1));
+                    }
+                    break;
+                case "SUB" :
+                    subToChannel(instruction.get(1), instruction.get(2)); 
+                    break;
+                case "BLOCK" :
+                    blockUser(instruction.get(1), instruction.get(2));
+                    break;
+                case: "UNBLOCK" :
+                    unblockUser(instruction.get(1), instruction.get(2));
+                    break;
+            }
+        }
+	}
+	
+	private void publishEvent(String publisherId, String eventType, String header, String payload) {
+        // do stuff
+    }
+    
+    private void publishEvent(String publisherId) {
+        // do stuff
+    }
+    
+    private void subToChannel(String subscriberId, String channelName) {
+        // do stuff
+    }
+    
+    private void blockUser(String subscriberId, String channelName) {
+        // do stuff
+    }
+    
+    private void unBlockUser(String subscriberId, String channelName) {
+        // do stuff
+    }
+	
 	
 	private List<AbstractPublisher> createPublishers() {
         StrategiesReader sr = new StrategiesReader("Strategies.str");
         List<int[]> strategyData = sr.getData();
+        // gotta deal with null list
 		List<AbstractPublisher> listOfPublishers = new ArrayList<>();
 		AbstractPublisher newPub;
         for(int i = 0; i < strategyData.size(); i++) {
@@ -67,6 +117,7 @@ public class Orchestration {
 	private List<AbstractSubscriber> createSubscribers() {
         StatesReader sr = new StatesReader("States.sts");
         List<int[]> stateData = sr.getData();
+        // gotta deal with null list
 		List<AbstractSubscriber> listOfSubscribers = new ArrayList<>();
 		AbstractSubscriber newSub;
         for(int i = 0; i < stateData.size(); i++) {

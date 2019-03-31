@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConfigReader {
+public class ConfigReader extends AbstractReader {
     
     public ConfigReader(String fileName) {
         super(fileName);
