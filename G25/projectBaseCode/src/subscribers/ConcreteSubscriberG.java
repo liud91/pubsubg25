@@ -14,7 +14,8 @@ import states.subscriber.StateName;
 class ConcreteSubscriberG extends AbstractSubscriber {
 
 	
-	protected ConcreteSubscriberG() {
+	protected ConcreteSubscriberG(long id) {
+        super(id);
 		state = StateFactory.createState(StateName.defaultState);
 	}
 	

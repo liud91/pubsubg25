@@ -13,13 +13,18 @@ import states.subscriber.StateName;
  */
 public abstract class AbstractSubscriber implements IEntity {
 	
-	
+	private long id;
 	protected AbstractState state;
 
 	/**
 	 * set's the {@link IState} for this ISubscriber implementation using the {@link StateFactory}
 	 * @param stateName the entry from the {@link StateName} enumeration that we want the new IState of the ISubscriber to be 
 	 */
+	 
+    public AbstractSubscriber(long id) {
+        this.id = id;
+    }
+    
 	public void setState(StateName stateName) {};
 
 	
@@ -44,5 +49,9 @@ public abstract class AbstractSubscriber implements IEntity {
 	 * @param channelName type String
 	 */
 	public void unsubscribe(String channelName) {};
+	
+	public long getId() {
+        return id;
+    }
 	
 }

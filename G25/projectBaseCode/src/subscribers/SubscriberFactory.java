@@ -22,18 +22,19 @@ public class SubscriberFactory {
 	 * @return the newly created {@link AbstractSubscriber} instance 
 	 */
 	public static AbstractSubscriber createSubscriber(SubscriberType subscriberType, StateName stateName) {
+        long id = SubscriberIDMaker.getNewSubscriberID();
 		AbstractSubscriber CSA = null;
 		switch (subscriberType) {
 			case alpha : 
-				CSA = new ConcreteSubscriberA();
+				CSA = new ConcreteSubscriberA(id);
 				CSA.setState(stateName);
 				break;
 			case beta : 
-				CSA = new ConcreteSubscriberB();
+				CSA = new ConcreteSubscriberB(id);
 				CSA.setState(stateName);
 				break;
 			case gamma :
-				CSA = new ConcreteSubscriberG();
+				CSA = new ConcreteSubscriberG(id);
 				CSA.setState(stateName);
 		}
 		return CSA;
