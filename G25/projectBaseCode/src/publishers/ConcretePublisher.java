@@ -32,7 +32,7 @@ public class ConcretePublisher extends AbstractPublisher {
 	 */
 	@Override
 	public void publish(AbstractEvent event) {
-		publishingStrategy.doPublish(event, (long) id);
+		publishingStrategy.doPublish(event, (int) id);
 	}
 
 	/* (non-Javadoc)
@@ -40,7 +40,7 @@ public class ConcretePublisher extends AbstractPublisher {
 	 */
 	@Override
 	public void publish() {
-		publishingStrategy.doPublish((long) id);
+		publishingStrategy.doPublish((int) id);
 	}
 
 }
