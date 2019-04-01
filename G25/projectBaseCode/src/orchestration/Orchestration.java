@@ -51,7 +51,7 @@ public class Orchestration {
 	private void runConfigFile(String fileName, List<AbstractPublisher> listOfPublishers, List<AbstractSubscriber> listOfSubscribers) {
         ConfigReader cr = new ConfigReader(fileName);
 		List<List<String>> instructionList = cr.getData();
-		for (instruction : instructionList) {
+		for (List<String> instruction : instructionList) {
             switch (instruction.get(0)) {
                 case "PUB" :
                     if (instruction.size() == 5) {
@@ -64,10 +64,10 @@ public class Orchestration {
                     subToChannel(instruction.get(1), instruction.get(2), listOfSubscribers); 
                     break;
                 case "BLOCK" :
-                    blockUser(instruction.get(1), instruction.get(2));
+                    blockUser(instruction.get(1), instruction.get(2), listOfSubscribers);
                     break;
                 case: "UNBLOCK" :
-                    unblockUser(instruction.get(1), instruction.get(2));
+                    unblockUser(instruction.get(1), instruction.get(2), listOfSubscribers);
                     break;
             }
         }
@@ -75,7 +75,7 @@ public class Orchestration {
 	
 	private void publishEvent(String publisherId, String eventType, String header, String payload, List<AbstractPublisher> listOfPublishers) {
 
-		
+		long id = (long) Integer.parseInt(subscriberId);
 		EventType type;
 		if (eventType.toUpperCase().equals("A")) {
 			type = EventType.TypeA;
@@ -87,10 +87,10 @@ public class Orchestration {
 		
 		EventMessage eventMessage = new EventMessage(header, payload);
 		
-		AbstractEvent event = EventFactory.createEvent(type, Integer.parseInt(publisherId), eventMessage);
+		AbstractEvent event = EventFactory.createEvent(type, id, eventMessage);
 		
 		for(AbstractPublisher publisher : listOfPublishers) {
-			if (publisherId == publisher.getId()) {
+			if (id == publisher.getId()) {
 				publisher.publish(event);
 			}
 		}
@@ -99,8 +99,9 @@ public class Orchestration {
     }
     
     private void publishEvent(String publisherId) {
+        long id = (long) Integer.parseInt(subscriberId);
 		for(AbstractPublisher publisher : listOfPublishers) {
-			if (publisherId == publisher.getId()) {
+			if (id == publisher.getId()) {
 				publisher.publish();
 			}
 		}
