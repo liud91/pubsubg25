@@ -43,7 +43,7 @@ public class Orchestration {
 		}
 		*/
 		
-		testHarness.runConfigFile("Config.cfg");
+		testHarness.runConfigFile("Config.cfg", listOfPublishers, listOfSubscribers);
 		
             
 	}
