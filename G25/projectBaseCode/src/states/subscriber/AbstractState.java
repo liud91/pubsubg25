@@ -15,7 +15,7 @@ public abstract class AbstractState {
 	
 	public abstract void handleEvent(AbstractEvent event, String channelName);
 	
-	protected StateName getStateName() {
+	public StateName getStateName() {
 		return this.stateName;
 	}
 	

@@ -22,6 +22,7 @@ class ConcreteSubscriberA extends AbstractSubscriber {
 	/* (non-Javadoc)
 	 * @see subscribers.ISubscriber#setState(states.subscriber.StateName)
 	 */
+	@Override
 	public void setState(StateName stateName) {
 		state = StateFactory.createState(stateName);
 	}

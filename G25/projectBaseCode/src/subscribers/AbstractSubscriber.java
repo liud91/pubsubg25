@@ -36,7 +36,7 @@ public abstract class AbstractSubscriber implements IEntity {
 	 */
 	
 	public void alert(AbstractEvent event, String channelName) {
-		System.out.println("Subscriber " + id + " receives event " + event.getEventId() + " and handles it at state " + state);
+		System.out.println("Subscriber " + id + " receives event " + event.getEventId() + " and handles it at state " + state.getStateName());
 		state.handleEvent(event, channelName);
 	}
 	

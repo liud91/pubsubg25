@@ -30,7 +30,6 @@ public class ChannelPoolManager {
 	private ChannelPoolManager() {
 		ChannelReader cr = new ChannelReader("Channels.chl");
 		List<String> channelData = cr.getData();
-		// gotta check for null case
 		if (channelData.equals(null)) {
 			System.out.println("Error with loading from file, creating one no_theme_channel");
 			addChannel("no_theme");
