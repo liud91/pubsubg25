@@ -1,28 +1,23 @@
 package orchestration;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import pubSubServer.AbstractChannel;
-import pubSubServer.ChannelDiscovery;
-import pubSubServer.SubscriptionManager;
+import events.AbstractEvent;
+import events.EventFactory;
+import events.EventMessage;
+import events.EventType;
 import publishers.AbstractPublisher;
 import publishers.PublisherFactory;
 import publishers.PublisherType;
+import reader.ConfigReader;
+import reader.StatesReader;
+import reader.StrategiesReader;
 import states.subscriber.StateName;
 import strategies.publisher.StrategyName;
 import subscribers.AbstractSubscriber;
 import subscribers.SubscriberFactory;
 import subscribers.SubscriberType;
-import reader.AbstractReader;
-import reader.ChannelReader;
-import reader.StatesReader;
-import reader.StrategiesReader;
 
 public class Orchestration {
 
@@ -79,7 +74,28 @@ public class Orchestration {
 	}
 	
 	private void publishEvent(String publisherId, String eventType, String header, String payload) {
-        // do stuff
+
+		
+		EventType type;
+		if (eventType.toUpperCase().equals("A")) {
+			type = EventType.TypeA;
+		} else if (eventType.toUpperCase().equals("B")) {
+			type = EventType.TypeB;
+		} else {
+				type = EventType.TypeC;
+		}
+		
+		EventMessage eventMessage = new EventMessage(header, payload);
+		
+		AbstractEvent event = EventFactory.createEvent(type, Integer.parseInt(publisherId), eventMessage);
+		
+		for(AbstractPublisher publisher : listOfPublishers) {
+			if (publisherId == publisher) {
+				publisher.doPublish(event);
+			}
+		}
+
+		
     }
     
     private void publishEvent(String publisherId) {
