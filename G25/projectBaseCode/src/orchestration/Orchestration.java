@@ -94,6 +94,7 @@ public class Orchestration {
 		for(AbstractPublisher publisher : listOfPublishers) {
 			if (id == publisher.getId()) {
 				publisher.publish(event);
+				System.out.println("Publisher " + publisher.getId() + "publishes event " + event.getEventId());
 			}
 		}
 
@@ -115,6 +116,7 @@ public class Orchestration {
         for (AbstractSubscriber sub : listOfSubscribers) {
             if (sub.getId() == id) {
                 subManager.subscribe(channelName, sub);
+                System.out.println("Subscriber " + sub.getId() + " subscribes to channel " + channelName);
             }
         }
     }
@@ -125,6 +127,7 @@ public class Orchestration {
         for (AbstractSubscriber sub : listOfSubscribers) {
             if (sub.getId() == id) {
                 channelAccess.blockSubscriber(sub, channelName);
+                System.out.println("Subscriber " + sub.getId() + " is blocked on channel " + channelName);
             }
         }
     }
@@ -135,6 +138,7 @@ public class Orchestration {
         for (AbstractSubscriber sub : listOfSubscribers) {
             if (sub.getId() == id) {
                 channelAccess.unBlockSubscriber(sub, channelName);
+                System.out.println("Subscriber " + sub.getId() + " is unblocked on channel " + channelName);
             }
         }
     }
@@ -150,6 +154,8 @@ public class Orchestration {
                     PublisherType.values()[strategyData.get(i)[0]],
                     StrategyName.values()[strategyData.get(i)[1]]);
             listOfPublishers.add(newPub);
+            System.out.println("Publisher " + newPub.getId() + " created");
+            System.out.println("Publisher " + newPub.getId() + " has strategy " + StrategyName.values()[strategyData.get(i)[1]]);
         }
 		return listOfPublishers;
 	}
@@ -165,6 +171,8 @@ public class Orchestration {
                     SubscriberType.values()[stateData.get(i)[0]],
                     StateName.values()[stateData.get(i)[1]]);
             listOfSubscribers.add(newSub);
+            System.out.println("Subscriber " + newSub.getId() + " created");
+            System.out.println("Subscriber " + newSub.getId() + " is on state " + StateName.values()[stateData.get(i)[1]]);
         }
 		return listOfSubscribers;
 	}	

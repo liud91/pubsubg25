@@ -28,7 +28,7 @@ public abstract class AbstractEvent {
 	 * 
 	 * @return a long value designating the EventType
 	 */
-	protected long getEventType() {
+	public long getEventId() {
 		return eventId;
 	}
 	
@@ -37,7 +37,7 @@ public abstract class AbstractEvent {
 	 * 
 	 * @return Event Publisher's hashcode
 	 */
-	protected int getEventPublisher() {
+	public int getEventPublisher() {
 		return eventPublisherId;
 	}
 	
