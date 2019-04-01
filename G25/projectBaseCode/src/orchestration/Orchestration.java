@@ -124,7 +124,7 @@ public class Orchestration {
         for(int i = 0; i < strategyData.size(); i++) {
             newPub = PublisherFactory.createPublisher(
                     PublisherType.values()[strategyData.get(i)[0]],
-                    (long) strategyData.get(i)[1]]);
+                    StrategyName.values()[strategyData.get(i)[1]]);
             listOfPublishers.add(newPub);
         }
 		return listOfPublishers;
