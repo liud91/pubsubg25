@@ -32,7 +32,6 @@ class Channel extends AbstractChannel {
 	 */
 	protected void publishEvent(AbstractEvent event) {
 		events.add(event);
-		System.out.println("Channel " + channelTopic + " has event " + event.getEventId() + " from publisher " + event.getEventPublisher());
 		notifySubscribers(event);
 
 	}
