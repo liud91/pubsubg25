@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ConfigReader extends AbstractReader {
@@ -18,7 +19,7 @@ public class ConfigReader extends AbstractReader {
         try {
         	BufferedReader br = new BufferedReader(new FileReader(new File(fileName)));
 			while(br.ready()) {
-				List<String> instructionLine = br.readLine().split(" ");
+				List<String> instructionLine = Arrays.asList(br.readLine().split(" "));
 				instructionList.add(instructionLine);
 			}
 	        br.close();
@@ -27,4 +28,5 @@ public class ConfigReader extends AbstractReader {
 		}
 
         return instructionList;
+    }
 }

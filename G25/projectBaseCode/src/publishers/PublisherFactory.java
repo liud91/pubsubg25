@@ -25,7 +25,7 @@ public class PublisherFactory {
 	 */
 	public static AbstractPublisher createPublisher(PublisherType publisherType, StrategyName strategyName) {
 		AbstractPublisher ip;
-		long id = PublisherIDMaker.getNewEventID();
+		long id = PublisherIDMaker.getNewPublisherID();
 		switch (publisherType) {
 			case alphaPub : 
 				ip = new ConcretePublisher(StrategyFactory.createStrategy(strategyName), id);

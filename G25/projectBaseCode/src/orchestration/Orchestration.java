@@ -7,6 +7,8 @@ import events.AbstractEvent;
 import events.EventFactory;
 import events.EventMessage;
 import events.EventType;
+import pubSubServer.ChannelAccessControl;
+import pubSubServer.SubscriptionManager;
 import publishers.AbstractPublisher;
 import publishers.PublisherFactory;
 import publishers.PublisherType;
@@ -57,7 +59,7 @@ public class Orchestration {
                     if (instruction.size() == 5) {
                         publishEvent(instruction.get(1), instruction.get(2), instruction.get(3), instruction.get(4), listOfPublishers);
                     } else {
-                        publishEvent(instruction.get(1));
+                        publishEvent(instruction.get(1), listOfPublishers);
                     }
                     break;
                 case "SUB" :
@@ -66,8 +68,8 @@ public class Orchestration {
                 case "BLOCK" :
                     blockUser(instruction.get(1), instruction.get(2), listOfSubscribers);
                     break;
-                case: "UNBLOCK" :
-                    unblockUser(instruction.get(1), instruction.get(2), listOfSubscribers);
+                case "UNBLOCK" :
+                    unBlockUser(instruction.get(1), instruction.get(2), listOfSubscribers);
                     break;
             }
         }
@@ -75,7 +77,7 @@ public class Orchestration {
 	
 	private void publishEvent(String publisherId, String eventType, String header, String payload, List<AbstractPublisher> listOfPublishers) {
 
-		long id = (long) Integer.parseInt(subscriberId);
+		int id = Integer.parseInt(publisherId);
 		EventType type;
 		if (eventType.toUpperCase().equals("A")) {
 			type = EventType.TypeA;
@@ -98,8 +100,8 @@ public class Orchestration {
 		
     }
     
-    private void publishEvent(String publisherId) {
-        long id = (long) Integer.parseInt(subscriberId);
+    private void publishEvent(String publisherId, List<AbstractPublisher> listOfPublishers) {
+        long id = (long) Integer.parseInt(publisherId);
 		for(AbstractPublisher publisher : listOfPublishers) {
 			if (id == publisher.getId()) {
 				publisher.publish();
