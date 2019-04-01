@@ -32,7 +32,7 @@ class ConcreteSubscriberA extends AbstractSubscriber {
 	 */
 	@Override
 	public void alert(AbstractEvent event, String channelName) {
-		System.out.println("\nSubscriber " + this + " handling event ::" + event + ":: published on channel " + channelName + "\n");
+		// System.out.println("\nSubscriber " + this + " handling event ::" + event + ":: published on channel " + channelName + "\n");
 		state.handleEvent(event, channelName);
 	}
 

@@ -9,7 +9,7 @@ class DefaultState extends AbstractState {
 	
 	public void handleEvent(AbstractEvent event, String channelName) {
         // probably need to do more on this?
-        System.out.println("Handles event at Default State\n");
+        // System.out.println("Handles event at Default State\n");
 	}
 
 }
