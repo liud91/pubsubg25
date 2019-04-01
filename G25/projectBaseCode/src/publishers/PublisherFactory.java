@@ -25,22 +25,19 @@ public class PublisherFactory {
 	 */
 	public static AbstractPublisher createPublisher(PublisherType publisherType, StrategyName strategyName) {
 		AbstractPublisher ip;
-		long pid = PublisherIDMaker.getNewEventID();
+		long id = PublisherIDMaker.getNewEventID();
 		switch (publisherType) {
 			case alphaPub : 
-				ip = new ConcretePublisher(StrategyFactory.createStrategy(strategyName));
+				ip = new ConcretePublisher(StrategyFactory.createStrategy(strategyName), id);
 				return ip;
 			case betaPub : 
-				ip = new ConcretePublisher(StrategyFactory.createStrategy(strategyName));
+				ip = new ConcretePublisher(StrategyFactory.createStrategy(strategyName), id);
 				return ip;
 			case gammaPub : 
-				ip = new ConcretePublisher(StrategyFactory.createStrategy(strategyName));
+				ip = new ConcretePublisher(StrategyFactory.createStrategy(strategyName), id);
 				return ip;
-			case deltaPub : 
-				ip = new ConcretePublisher(StrategyFactory.createStrategy(strategyName));
-				return ip;
-			default:
-				ip = new ConcretePublisher(StrategyFactory.createStrategy(strategyName));
+			default : 
+				ip = new ConcretePublisher(StrategyFactory.createStrategy(strategyName), id);
 				return ip;
 		}
 	}

@@ -22,8 +22,9 @@ public class ConcretePublisher extends AbstractPublisher {
 	 * @param concreteStrategy attaches a concreteStrategy generated from the {@link StrategyFactory#createStrategy(strategies.publisher.StrategyName)}
 	 * method
 	 */
-	protected ConcretePublisher(AbstractStrategy concreteStrategy) {
+	protected ConcretePublisher(AbstractStrategy concreteStrategy, long publisherId) {
 		this.publishingStrategy = concreteStrategy;
+		this.id = publisherId;
 	}
 
 	/* (non-Javadoc)

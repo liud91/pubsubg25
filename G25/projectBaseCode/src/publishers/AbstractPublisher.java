@@ -11,6 +11,7 @@ import strategies.publisher.AbstractStrategy;
 public abstract class AbstractPublisher implements IEntity {
 
 	protected AbstractStrategy publishingStrategy = null;
+	protected long id;
 	/**
 	 * all implementations of this Interface MUST contain an instance variable of 
 	 * type {@link IStrategy} which has the methods:

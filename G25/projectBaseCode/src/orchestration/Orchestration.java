@@ -82,7 +82,7 @@ public class Orchestration {
 		} else if (eventType.toUpperCase().equals("B")) {
 			type = EventType.TypeB;
 		} else {
-				type = EventType.TypeC;
+            type = EventType.TypeC;
 		}
 		
 		EventMessage eventMessage = new EventMessage(header, payload);
@@ -124,7 +124,7 @@ public class Orchestration {
         for(int i = 0; i < strategyData.size(); i++) {
             newPub = PublisherFactory.createPublisher(
                     PublisherType.values()[strategyData.get(i)[0]],
-                    StrategyName.values()[strategyData.get(i)[1]]);
+                    (long) strategyData.get(i)[1]]);
             listOfPublishers.add(newPub);
         }
 		return listOfPublishers;
