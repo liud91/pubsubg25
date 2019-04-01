@@ -35,5 +35,9 @@ public abstract class AbstractPublisher implements IEntity {
 	 * 
 	 */
 	public void publish() {};
+	
+	public long getId() {
+        return id;
+    }
 
 }

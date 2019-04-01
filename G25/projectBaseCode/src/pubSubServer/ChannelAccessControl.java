@@ -24,7 +24,7 @@ public class ChannelAccessControl {
         blackList = new HashMap<>();
     }
 	
-	protected static ChannelAccessControl getInstance() {
+	public static ChannelAccessControl getInstance() {
 		if (instance == null) {
 			instance = new ChannelAccessControl();
         }

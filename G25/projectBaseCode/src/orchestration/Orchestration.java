@@ -48,20 +48,20 @@ public class Orchestration {
             
 	}
 
-	private void runConfigFile(String fileName) {
+	private void runConfigFile(String fileName, List<AbstractPublisher> listOfPublishers, List<AbstractSubscriber> listOfSubscribers) {
         ConfigReader cr = new ConfigReader(fileName);
 		List<List<String>> instructionList = cr.getData();
 		for (instruction : instructionList) {
             switch (instruction.get(0)) {
                 case "PUB" :
                     if (instruction.size() == 5) {
-                        publishEvent(instruction.get(1), instruction.get(2), instruction.get(3), instruction.get(4));
+                        publishEvent(instruction.get(1), instruction.get(2), instruction.get(3), instruction.get(4), listOfPublishers);
                     } else {
                         publishEvent(instruction.get(1));
                     }
                     break;
                 case "SUB" :
-                    subToChannel(instruction.get(1), instruction.get(2)); 
+                    subToChannel(instruction.get(1), instruction.get(2), listOfSubscribers); 
                     break;
                 case "BLOCK" :
                     blockUser(instruction.get(1), instruction.get(2));
@@ -73,7 +73,7 @@ public class Orchestration {
         }
 	}
 	
-	private void publishEvent(String publisherId, String eventType, String header, String payload) {
+	private void publishEvent(String publisherId, String eventType, String header, String payload, List<AbstractPublisher> listOfPublishers) {
 
 		
 		EventType type;
@@ -90,8 +90,8 @@ public class Orchestration {
 		AbstractEvent event = EventFactory.createEvent(type, Integer.parseInt(publisherId), eventMessage);
 		
 		for(AbstractPublisher publisher : listOfPublishers) {
-			if (publisherId == publisher) {
-				publisher.doPublish(event);
+			if (publisherId == publisher.getId()) {
+				publisher.publish(event);
 			}
 		}
 
@@ -99,19 +99,41 @@ public class Orchestration {
     }
     
     private void publishEvent(String publisherId) {
-        // do stuff
+		for(AbstractPublisher publisher : listOfPublishers) {
+			if (publisherId == publisher.getId()) {
+				publisher.publish();
+			}
+		}
     }
     
-    private void subToChannel(String subscriberId, String channelName) {
-        // do stuff
+    private void subToChannel(String subscriberId, String channelName, List<AbstractSubscriber> listOfSubscribers) {
+        SubscriptionManager subManager = SubscriptionManager.getInstance();
+        long id = (long) Integer.parseInt(subscriberId);
+        for (AbstractSubscriber sub : listOfSubscribers) {
+            if (sub.getId() == id) {
+                subManager.subscribe(channelName, sub);
+            }
+        }
     }
     
-    private void blockUser(String subscriberId, String channelName) {
-        // do stuff
+    private void blockUser(String subscriberId, String channelName, List<AbstractSubscriber> listOfSubscribers) {
+        ChannelAccessControl channelAccess = ChannelAccessControl.getInstance();
+        long id = (long) Integer.parseInt(subscriberId);
+        for (AbstractSubscriber sub : listOfSubscribers) {
+            if (sub.getId() == id) {
+                channelAccess.blockSubscriber(sub, channelName);
+            }
+        }
     }
     
-    private void unBlockUser(String subscriberId, String channelName) {
-        // do stuff
+    private void unBlockUser(String subscriberId, String channelName, List<AbstractSubscriber> listOfSubscribers) {
+        ChannelAccessControl channelAccess = ChannelAccessControl.getInstance();
+        long id = (long) Integer.parseInt(subscriberId);
+        for (AbstractSubscriber sub : listOfSubscribers) {
+            if (sub.getId() == id) {
+                channelAccess.unBlockSubscriber(sub, channelName);
+            }
+        }
     }
 	
 	
