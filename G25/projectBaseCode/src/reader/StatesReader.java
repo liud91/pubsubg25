@@ -29,7 +29,8 @@ public class StatesReader extends AbstractReader {
 	        }
 			br.close();
 		} catch (IOException e) {
-			StateConfigIntArray = null;
+			System.out.println("Error reading States file.");
+			System.exit(1);
 		}   
         return StateConfigIntArray;
     }

@@ -143,8 +143,7 @@ public class Orchestration {
 	private List<AbstractPublisher> createPublishers() {
         StrategiesReader sr = new StrategiesReader("Strategies.str");
         List<int[]> strategyData = sr.getData();
-        // gotta deal with null list
-		List<AbstractPublisher> listOfPublishers = new ArrayList<>();
+        List<AbstractPublisher> listOfPublishers = new ArrayList<>();
 		AbstractPublisher newPub;
         for(int i = 0; i < strategyData.size(); i++) {
             newPub = PublisherFactory.createPublisher(

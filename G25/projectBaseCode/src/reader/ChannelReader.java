@@ -23,7 +23,8 @@ public class ChannelReader extends AbstractReader {
 			}
 	        br.close();
 		} catch (IOException e) {
-			channelConfigArray = null;
+			System.out.println("Error reading Channels file.");
+			System.exit(1);
 		}
 
         return channelConfigArray;

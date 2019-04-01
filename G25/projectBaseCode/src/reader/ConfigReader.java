@@ -24,7 +24,8 @@ public class ConfigReader extends AbstractReader {
 			}
 	        br.close();
 		} catch (IOException e) {
-			instructionList = null;
+			System.out.println("Error reading Configuration file.");
+			System.exit(1);
 		}
 
         return instructionList;

@@ -29,7 +29,8 @@ public class StrategiesReader extends AbstractReader {
 	        }
 			br.close();
 		} catch (IOException e) {
-			StrategyConfigIntArray = null;
+			System.out.println("Error reading Strategies file");
+			System.exit(1);
 		}   
         return StrategyConfigIntArray;
     }
