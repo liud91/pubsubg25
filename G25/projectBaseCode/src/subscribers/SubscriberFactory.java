@@ -22,7 +22,7 @@ public class SubscriberFactory {
 	 * @return the newly created {@link AbstractSubscriber} instance 
 	 */
 	public static AbstractSubscriber createSubscriber(SubscriberType subscriberType, StateName stateName) {
-        long id = SubscriberIDMaker.getNewSubscriberID();
+        long id = SubscriberIDMaker.getNewSubID();
 		AbstractSubscriber CSA = null;
 		switch (subscriberType) {
 			case alpha : 
