@@ -6,13 +6,24 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Channel Reader class
+ * @author dmaclean, dliu
+ *
+ */
 public class StrategiesReader extends AbstractReader {
-    
+	/**
+	 * Constructor for concrete strategies reader
+	 * @param fileName is the file to be read
+	 */
     public StrategiesReader(String fileName) {
         super(fileName);
     }
     
+    /**
+     * getter
+     * @return the array list of strategies
+     */
     public List<int[]> getData() {
         BufferedReader br;
         List<int[]> StrategyConfigIntArray = new ArrayList<int[]>();

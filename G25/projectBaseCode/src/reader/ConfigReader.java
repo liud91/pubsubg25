@@ -7,13 +7,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+/**
+ * Channel Reader class
+ * @author dmaclean, dliu
+ *
+ */
 public class ConfigReader extends AbstractReader {
-    
+	/**
+	 * Constructor for concrete config file reader
+	 * @param fileName is the file to be read
+	 */
     public ConfigReader(String fileName) {
         super(fileName);
     }
     
+    /**
+     * getter
+     * @return the array list of instructions
+     */
     public List<List<String>> getData() {
         List<List<String>> instructionList = new ArrayList<>();
         try {

@@ -13,7 +13,10 @@ import states.subscriber.StateName;
  */
 class ConcreteSubscriberA extends AbstractSubscriber {
 
-	
+	/**
+	 * constructor for ConcreteSubscriberA
+	 * @param id is the publisher's ID
+	 */
 	protected ConcreteSubscriberA(long id) {
         super(id);
 		state = StateFactory.createState(StateName.defaultState);

@@ -21,8 +21,15 @@ import subscribers.AbstractSubscriber;
 import subscribers.SubscriberFactory;
 import subscribers.SubscriberType;
 
+/**
+ * @author dmaclean, dliu
+ */
 public class Orchestration {
 
+	/**
+	 * Constructor for Orchestration class. This is the class which coordinates and performs the operation of the PubSub entity
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		List<AbstractPublisher> listOfPublishers = new ArrayList<>();
@@ -50,6 +57,12 @@ public class Orchestration {
             
 	}
 
+	/**
+	 * reads in the config file which denotes a sequence of publications, (un)blocks, (un)subscribes
+	 * @param fileName the file name which contains the events in the specified format per project descriptions
+	 * @param listOfPublishers contains all publishers in the system 
+	 * @param listOfSubscribers contains all subscribers in the system
+	 */
 	private void runConfigFile(String fileName, List<AbstractPublisher> listOfPublishers, List<AbstractSubscriber> listOfSubscribers) {
         ConfigReader cr = new ConfigReader(fileName);
 		List<List<String>> instructionList = cr.getData();
