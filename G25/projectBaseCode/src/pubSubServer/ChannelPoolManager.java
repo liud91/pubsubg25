@@ -102,6 +102,10 @@ public class ChannelPoolManager {
 		return channelsMap;
 	}
 	
+	/**
+	 * acessor for the ChannelName List 
+	 * @return the list of channel names
+	 */
 	protected List<String> listChannelNames(){
         return channelNameList;
     }
