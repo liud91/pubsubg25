@@ -198,9 +198,12 @@ public class Orchestration {
                     PublisherType.values()[strategyData.get(i)[0]],
                     StrategyName.values()[strategyData.get(i)[1]]);
             listOfPublishers.add(newPub);
-            System.out.println("Publisher " + newPub.getId() + " created");
-            System.out.println("Publisher " + newPub.getId() + " has strategy " + StrategyName.values()[strategyData.get(i)[1]]);
+//            System.out.println("Publisher " + newPub.getId() + " created");
+//            System.out.println("Publisher " + newPub.getId() + " has strategy " + StrategyName.values()[strategyData.get(i)[1]]);
+            System.out.println("Publisher " + newPub.getId() + " created and has strategy " + StrategyName.values()[strategyData.get(i)[1]]);
         }
+        System.out.println("Publishers Created.\n");
+        
 		return listOfPublishers;
 	}
 	
@@ -219,9 +222,10 @@ public class Orchestration {
                     SubscriberType.values()[stateData.get(i)[0]],
                     StateName.values()[stateData.get(i)[1]]);
             listOfSubscribers.add(newSub);
-            System.out.println("Subscriber " + newSub.getId() + " created");
-            System.out.println("Subscriber " + newSub.getId() + " is on state " + StateName.values()[stateData.get(i)[1]]);
-        }
+//            System.out.println("Subscriber " + newSub.getId() + " created");
+//            System.out.println("Subscriber " + newSub.getId() + " is on state " + StateName.values()[stateData.get(i)[1]]);
+            System.out.println("Subscriber " + newSub.getId() + " created and is on state " + StateName.values()[stateData.get(i)[1]]);        }
+        System.out.println("Subscribers Created.\n");
 		return listOfSubscribers;
 	}	
 }
