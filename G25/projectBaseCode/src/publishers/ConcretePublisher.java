@@ -10,7 +10,7 @@ import strategies.publisher.StrategyFactory;
  * 
  * the WeatherPublisher class is an example of a ConcretePublisher 
  * implementing the IPublisher interface. Of course the publish 
- * methods could have far more interesting logics
+ * methods could have far more interesting logics a
  */
 public class ConcretePublisher extends AbstractPublisher {
 
