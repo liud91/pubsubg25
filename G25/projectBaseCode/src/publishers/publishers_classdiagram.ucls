@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.3" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="publishers.AbstractPublisher" project="G25" 
-    file="/G25/projectBaseCode/src/publishers/AbstractPublisher.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="173" y="152"/>    
+  <class id="1" language="java" name="publishers.AbstractPublisher" project="src" 
+    file="/src/publishers/AbstractPublisher.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="175" y="157"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="publishers.ConcretePublisher" project="G25" 
-    file="/G25/projectBaseCode/src/publishers/ConcretePublisher.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="174" y="431"/>    
+  <class id="2" language="java" name="publishers.ConcretePublisher" project="src" 
+    file="/src/publishers/ConcretePublisher.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="182" y="465"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="publishers.PublisherFactory" project="G25" 
-    file="/G25/projectBaseCode/src/publishers/PublisherFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="522" y="433"/>    
+  <class id="3" language="java" name="publishers.PublisherFactory" project="src" 
+    file="/src/publishers/PublisherFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="540" y="471"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="publishers.PublisherIDMaker" project="G25" 
-    file="/G25/projectBaseCode/src/publishers/PublisherIDMaker.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="605" y="126"/>    
+  <class id="4" language="java" name="publishers.PublisherIDMaker" project="src" 
+    file="/src/publishers/PublisherIDMaker.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="398" y="300"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <enumeration id="5" language="java" name="publishers.PublisherType" project="G25" 
-    file="/G25/projectBaseCode/src/publishers/PublisherType.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="412" y="144"/>    
+  <enumeration id="5" language="java" name="publishers.PublisherType" project="src" 
+    file="/src/publishers/PublisherType.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="604" y="163"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
