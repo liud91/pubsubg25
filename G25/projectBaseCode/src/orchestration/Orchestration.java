@@ -87,7 +87,14 @@ public class Orchestration {
             }
         }
 	}
-	
+	/**
+	 * publishes an event to the specified publisher type
+	 * @param publisherId the type of publishers which will create the events
+	 * @param eventType the type of event to be created
+	 * @param header event header
+	 * @param payload event message
+	 * @param listOfPublishers reference object to list of publishers
+	 */
 	private void publishEvent(String publisherId, String eventType, String header, String payload, List<AbstractPublisher> listOfPublishers) {
 
 		int id = Integer.parseInt(publisherId);
@@ -113,7 +120,11 @@ public class Orchestration {
 
 		
     }
-    
+    /**
+     * publishes a default event to the publisher type specified
+     * @param publisherId the type of publishers who will create the event
+     * @param listOfPublishers reference object to the list of publishers
+     */
     private void publishEvent(String publisherId, List<AbstractPublisher> listOfPublishers) {
         long id = (long) Integer.parseInt(publisherId);
 		for(AbstractPublisher publisher : listOfPublishers) {
@@ -122,7 +133,12 @@ public class Orchestration {
 			}
 		}
     }
-    
+    /**
+     * subscribes a subscriber to a channel
+     * @param subscriberId the subscriber to be subscribed
+     * @param channelName the channel to which the subscriber will be subscribed
+     * @param listOfSubscribers a reference object to the list of subscribers
+     */
     private void subToChannel(String subscriberId, String channelName, List<AbstractSubscriber> listOfSubscribers) {
         SubscriptionManager subManager = SubscriptionManager.getInstance();
         long id = (long) Integer.parseInt(subscriberId);
@@ -134,6 +150,12 @@ public class Orchestration {
         }
     }
     
+    /**
+     * blocks a subscriber on a specified channel
+     * @param subscriberId the subscriber to be blocked
+     * @param channelName the channel on which to block the subscriber
+     * @param listOfSubscribers a reference object to the list of subscribers
+     */
     private void blockUser(String subscriberId, String channelName, List<AbstractSubscriber> listOfSubscribers) {
         ChannelAccessControl channelAccess = ChannelAccessControl.getInstance();
         long id = (long) Integer.parseInt(subscriberId);
@@ -145,6 +167,12 @@ public class Orchestration {
         }
     }
     
+    /**
+     * unblocks a subscriber on a specified channel
+     * @param subscriberId the subscriber to be unblocked
+     * @param channelName the channel on which to unblock the subscriber
+     * @param listOfSubscribers a reference object to the list of subscribers
+     */
     private void unBlockUser(String subscriberId, String channelName, List<AbstractSubscriber> listOfSubscribers) {
         ChannelAccessControl channelAccess = ChannelAccessControl.getInstance();
         long id = (long) Integer.parseInt(subscriberId);
@@ -156,7 +184,10 @@ public class Orchestration {
         }
     }
 	
-	
+	/**
+	 * uses reader object to read file specifying which publishers to create, and which strategies they will be associated with
+	 * @return the object which contains the list of publishers
+	 */
 	private List<AbstractPublisher> createPublishers() {
         StrategiesReader sr = new StrategiesReader("Strategies.str");
         List<int[]> strategyData = sr.getData();
@@ -173,6 +204,10 @@ public class Orchestration {
 		return listOfPublishers;
 	}
 	
+	/**
+	 * uses reader object to read the file specifying which subscribers to create, and their assoicated states
+	 * @return the object which contains the list of subscribers
+	 */
 	private List<AbstractSubscriber> createSubscribers() {
         StatesReader sr = new StatesReader("States.sts");
         List<int[]> stateData = sr.getData();
