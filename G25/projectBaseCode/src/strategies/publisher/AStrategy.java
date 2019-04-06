@@ -23,7 +23,8 @@ class AStrategy extends AbstractStrategy {
 	public void doPublish(int publisherId) {
         EventMessage message = new EventMessage(defaultHeader, defaultBody);
         AbstractEvent event = EventFactory.createEvent(defaultEventType, publisherId, message);
-        ChannelEventDispatcher.getInstance().postEvent(event, getValidChannels()); 
+        System.out.println("Publisher " + publisherId + " publishes event " + event.getEventId());
+        ChannelEventDispatcher.getInstance().postEvent(event, getValidChannels());
 	}
 	
 	/**
@@ -32,7 +33,8 @@ class AStrategy extends AbstractStrategy {
 	 * @param publisherId is the publisher's ID with which the event will be associated
 	 */
 	public void doPublish(AbstractEvent event, int publisherId) {
-        ChannelEventDispatcher.getInstance().postEvent(event, getValidChannels()); 
+        System.out.println("Publisher " + publisherId + " publishes event " + event.getEventId());
+        ChannelEventDispatcher.getInstance().postEvent(event, getValidChannels());
 	}
 
 }

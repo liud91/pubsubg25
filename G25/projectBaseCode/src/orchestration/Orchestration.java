@@ -114,7 +114,6 @@ public class Orchestration {
 		for(AbstractPublisher publisher : listOfPublishers) {
 			if (id == publisher.getId()) {
 				publisher.publish(event);
-				System.out.println("Publisher " + publisher.getId() + " publishes event " + event.getEventId());
 			}
 		}
 
