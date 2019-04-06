@@ -8,6 +8,8 @@ import events.AbstractEvent;
  */
 public abstract class AbstractStrategy {
 	private StrategyName strategyName;
+	private int strategyDefinition;
+	private int numberOfStrategies;
 	protected EventType defaultEventType = EventType.TypeC;
 	protected String defaultHeader = "Default Header";
 	protected String defaultBody = "Default Body";
@@ -16,8 +18,10 @@ public abstract class AbstractStrategy {
 	 * constructor for AbstractStrategy
 	 * @param strategyName is the name of the publisher's associated strategy
 	 */
-	public AbstractStrategy(StrategyName strategyName) {
+	public AbstractStrategy(StrategyName strategyName, int strategyDefinition) {
 		this.strategyName = strategyName;
+		this.strategyDefinition = strategyDefinition;
+		numberOfStrategies = 3;
 	}
 	
 	/**
@@ -40,6 +44,19 @@ public abstract class AbstractStrategy {
 	 * @param publisherId publisherId is the publisher's ID with which the event will be associated
 	 */
 	public abstract void doPublish(int publisherId);
+	
+	private List<String> getValidChannels() {
+        List<String> channels = ChannelDiscovery.getInstance().listChannelNames();
+        int i = 0;
+        for (String channel : channels) {
+            if ((channel.hashCode() % numberOfStrategies) != strategyDefinition) {
+                channels.remove(i);
+            }
+            i++;
+        }
+        return channels;
+    }
+	
 	
 }
 

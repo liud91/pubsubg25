@@ -13,7 +13,7 @@ class BStrategy extends AbstractStrategy {
 	 * @param strategyName is the name of the publisher's associated strategy
 	 */
 	protected BStrategy(StrategyName strategyName) {
-		super(strategyName);
+		super(strategyName, 1);
 	}
 	
 	/**
@@ -23,7 +23,7 @@ class BStrategy extends AbstractStrategy {
 	public void doPublish(int publisherId) {
         EventMessage message = new EventMessage(defaultHeader, defaultBody);
         AbstractEvent event = EventFactory.createEvent(defaultEventType, publisherId, message);
-        ChannelEventDispatcher.getInstance().postEvent(event, ChannelDiscovery.getInstance().listChannelNames()); 
+        ChannelEventDispatcher.getInstance().postEvent(event, getValidChannels()); 
 	}
 	
 	/**
@@ -32,7 +32,7 @@ class BStrategy extends AbstractStrategy {
 	 * @param publisherId is the publisher's ID with which the event will be associated
 	 */
 	public void doPublish(AbstractEvent event, int publisherId) {
-        ChannelEventDispatcher.getInstance().postEvent(event, ChannelDiscovery.getInstance().listChannelNames()); 
+        ChannelEventDispatcher.getInstance().postEvent(event, getValidChannels()); 
 	}
 
 }
