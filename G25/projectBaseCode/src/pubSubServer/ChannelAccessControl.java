@@ -62,8 +62,7 @@ public class ChannelAccessControl {
 		if((blockedSubscribers = blackList.get(channelName)) == null)
 			return;
 		blockedSubscribers.remove(subscriber);
-		blackList.put(channelName, blockedSubscribers);
-				
+		blackList.put(channelName, blockedSubscribers);		
 	}
 
 	
@@ -80,8 +79,5 @@ public class ChannelAccessControl {
 			return false;
 		return (blockedSubscribers.contains(subscriber));
 	}
-
-
-	
 	
 }

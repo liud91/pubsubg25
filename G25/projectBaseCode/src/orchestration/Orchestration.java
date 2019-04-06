@@ -35,26 +35,9 @@ public class Orchestration {
 		List<AbstractPublisher> listOfPublishers = new ArrayList<>();
 		List<AbstractSubscriber> listOfSubscribers = new ArrayList<>();
 		Orchestration testHarness = new Orchestration();
-		
 		listOfPublishers = testHarness.createPublishers();
-		listOfSubscribers = testHarness.createSubscribers();
-
-		
-		//List<AbstractChannel> channels = ChannelDiscovery.getInstance().listChannels();
-		//For demonstration purposes only
-		/*int subscriberIndex = 0;
-		for(AbstractSubscriber subscriber : listOfSubscribers) {
-			subscriber.subscribe(channels.get(subscriberIndex%channels.size()).getChannelTopic());
-			subscriberIndex++;
-		}
-		for(AbstractPublisher publisher : listOfPublishers) {
-			publisher.publish();
-		}
-		*/
-		
-		testHarness.runConfigFile("Config.cfg", listOfPublishers, listOfSubscribers);
-		
-            
+		listOfSubscribers = testHarness.createSubscribers();	
+		testHarness.runConfigFile("Config.cfg", listOfPublishers, listOfSubscribers);            
 	}
 
 	/**
@@ -106,18 +89,13 @@ public class Orchestration {
 		} else {
             type = EventType.TypeC;
 		}
-		
 		EventMessage eventMessage = new EventMessage(header, payload);
-		
 		AbstractEvent event = EventFactory.createEvent(type, id, eventMessage);
-		
 		for(AbstractPublisher publisher : listOfPublishers) {
 			if (id == publisher.getId()) {
 				publisher.publish(event);
 			}
-		}
-
-		
+		}		
     }
     /**
      * publishes a default event to the publisher type specified
@@ -197,23 +175,19 @@ public class Orchestration {
                     PublisherType.values()[strategyData.get(i)[0]],
                     StrategyName.values()[strategyData.get(i)[1]]);
             listOfPublishers.add(newPub);
-//            System.out.println("Publisher " + newPub.getId() + " created");
-//            System.out.println("Publisher " + newPub.getId() + " has strategy " + StrategyName.values()[strategyData.get(i)[1]]);
-            System.out.printf("Publisher %3d created and is on state %s\n", newPub.getId(), StrategyName.values()[strategyData.get(i)[1]]);
+            System.out.printf("Publisher %3d created and is associated with strategy %s\n", newPub.getId(), StrategyName.values()[strategyData.get(i)[1]]);
         }
         System.out.println("Publisher Creation Complete.\n");
-        
 		return listOfPublishers;
 	}
 	
 	/**
-	 * uses reader object to read the file specifying which subscribers to create, and their assoicated states
+	 * uses reader object to read the file specifying which subscribers to create, and their associated states
 	 * @return the object which contains the list of subscribers
 	 */
 	private List<AbstractSubscriber> createSubscribers() {
         StatesReader sr = new StatesReader("States.sts");
         List<int[]> stateData = sr.getData();
-        // gotta deal with null list
 		List<AbstractSubscriber> listOfSubscribers = new ArrayList<>();
 		AbstractSubscriber newSub;
         for(int i = 0; i < stateData.size(); i++) {
@@ -221,8 +195,6 @@ public class Orchestration {
                     SubscriberType.values()[stateData.get(i)[0]],
                     StateName.values()[stateData.get(i)[1]]);
             listOfSubscribers.add(newSub);
-//            System.out.println("Subscriber " + newSub.getId() + " created");
-//            System.out.println("Subscriber " + newSub.getId() + " is on state " + StateName.values()[stateData.get(i)[1]]);
             System.out.printf("Subscriber %3d created and is on state %s\n", newSub.getId(), StateName.values()[stateData.get(i)[1]]);        }
         System.out.println("Subscriber Creation Complete.\n");
 		return listOfSubscribers;

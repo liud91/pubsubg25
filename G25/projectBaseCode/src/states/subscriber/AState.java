@@ -20,8 +20,6 @@ class AState extends AbstractState {
 	 * @param channelName is the channel to which the event is being posted
 	 */
 	public void handleEvent(AbstractEvent event, String channelName) {
-        // probably need to do more on this?
-        // System.out.println("Handles event at A State\n");
 	}
 
 }

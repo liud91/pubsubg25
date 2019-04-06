@@ -1,7 +1,6 @@
 package strategies.publisher;
 import events.EventFactory;
 import pubSubServer.ChannelEventDispatcher;
-import pubSubServer.ChannelDiscovery;
 import events.EventMessage;
 import events.AbstractEvent;
 

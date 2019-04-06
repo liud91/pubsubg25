@@ -1,10 +1,5 @@
 package pubSubServer;
 
-import java.io.BufferedReader;
-
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -103,7 +98,7 @@ public class ChannelPoolManager {
 	}
 	
 	/**
-	 * acessor for the ChannelName List 
+	 * accessor for the ChannelName List 
 	 * @return the list of channel names
 	 */
 	protected List<String> listChannelNames(){

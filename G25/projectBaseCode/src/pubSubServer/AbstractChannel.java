@@ -15,7 +15,6 @@ import subscribers.AbstractSubscriber;
  *  an enumeration of all available types of channel that can be created by the implemented 
  *  factory method
  */
-// TODO modify comments to hint at creation of ChannelFactory
 public abstract class AbstractChannel {
 
 	
@@ -38,8 +37,5 @@ public abstract class AbstractChannel {
 	/**
 	 * @return the topic/name of the concrete implementation of Channel 
 	 */
-	public String getChannelTopic() {
-		return "no topic";
-		};
 	
 }

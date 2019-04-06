@@ -60,7 +60,6 @@ public abstract class AbstractStrategy {
         return validChannels;
     }
 	
-	
 }
 
 

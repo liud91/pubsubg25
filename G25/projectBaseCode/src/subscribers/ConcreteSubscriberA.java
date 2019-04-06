@@ -1,8 +1,7 @@
 package subscribers;
 
-import events.AbstractEvent;
 import pubSubServer.SubscriptionManager;
-import states.subscriber.AbstractState;
+
 import states.subscriber.StateFactory;
 import states.subscriber.StateName;
 
@@ -23,7 +22,7 @@ class ConcreteSubscriberA extends AbstractSubscriber {
 	}
 	
 	/* (non-Javadoc)
-	 * @see subscribers.ISubscriber#setState(states.subscriber.StateName)
+	 * @see subscribers.AbstractSubscriber#setState(states.subscriber.StateName)
 	 */
 	@Override
 	public void setState(StateName stateName) {
@@ -32,12 +31,7 @@ class ConcreteSubscriberA extends AbstractSubscriber {
 	
 	
 	/* (non-Javadoc)
-	 * @see subscribers.ISubscriber#alert(events.AbstractEvent, java.lang.String)
-	 */
-	
-
-	/* (non-Javadoc)
-	 * @see subscribers.ISubscriber#subscribe(java.lang.String)
+	 * @see subscribers.AbstractSubscriber#subscribe(java.lang.String)
 	 */
 	@Override
 	public void subscribe(String channelName) {
@@ -45,7 +39,7 @@ class ConcreteSubscriberA extends AbstractSubscriber {
 	}
 
 	/* (non-Javadoc)
-	 * @see subscribers.ISubscriber#unsubscribe(java.lang.String)
+	 * @see subscribers.AbstractSubscriber#unsubscribe(java.lang.String)
 	 */
 	@Override
 	public void unsubscribe(String channelName) {

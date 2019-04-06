@@ -30,7 +30,7 @@ public abstract class AbstractSubscriber implements IEntity {
 	
 	/**
 	 * is the function called each time an event is published to one of the channels that the 
-	 * ISubscriber is sbuscribed to
+	 * ISubscriber is subscribed to
 	 * @param event the AbstractEvent that's received
 	 * @param channelName the name of the channel that sent the AbstractEvent to the ISubscriber
 	 */

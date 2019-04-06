@@ -45,9 +45,7 @@ public class ChannelDiscovery {
 	 * @return a {@link AbstractChannel} type object corresponding the the channelName provided as input
 	 */
 	protected AbstractChannel findChannel(String channelName) {
-		return cpm.getInstance().getChannelsMap().get(channelName);
+		return ChannelPoolManager.getInstance().getChannelsMap().get(channelName);
 	}
-	
-	
 	
 }
