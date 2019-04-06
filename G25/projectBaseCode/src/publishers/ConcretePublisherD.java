@@ -28,7 +28,7 @@ public class ConcretePublisherD extends AbstractPublisher {
 	}
 
 	/* (non-Javadoc)
-	 * @see publishers.IPublisher#publish(events.AbstractEvent)
+	 * @see publishers.AbstractPublisher#publish(events.AbstractEvent)
 	 */
 	@Override
 	public void publish(AbstractEvent event) {
@@ -36,7 +36,7 @@ public class ConcretePublisherD extends AbstractPublisher {
 	}
 
 	/* (non-Javadoc)
-	 * @see publishers.IPublisher#publish()
+	 * @see publishers.AbstractPublisher#publish()
 	 */
 	@Override
 	public void publish() {
