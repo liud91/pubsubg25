@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 /**
  * Channel Reader class
- * @author dmaclean, dliu
+ * @author dmaclean, dliu, awebb, jbowman, ikhan
  *
  */
 public class ConfigReader extends AbstractReader {

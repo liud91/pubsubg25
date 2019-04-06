@@ -5,7 +5,11 @@ import pubSubServer.ChannelDiscovery;
 import events.EventMessage;
 import events.AbstractEvent;
 
-
+/**
+ * default concrete implementation of AbstractStrategy
+ * @author dmaclean, dliu, awebb, jbowman, ikhan
+ *
+ */
 class DefaultStrategy extends AbstractStrategy {
 
 	/**

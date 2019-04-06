@@ -2,7 +2,7 @@ package reader;
 
 /**
  * Parent class for all reader classes
- * @author dmaclean, dliu
+ * @author dmaclean, dliu, awebb, jbowman, ikhan
  *
  */
 public class AbstractReader {

@@ -22,7 +22,7 @@ import subscribers.SubscriberFactory;
 import subscribers.SubscriberType;
 
 /**
- * @author dmaclean, dliu
+ * @author dmaclean, dliu, awebb, jbowman, ikhan
  */
 public class Orchestration {
 

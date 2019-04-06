@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  * Channel Reader class
- * @author dmaclean, dliu
+ * @@author dmaclean, dliu, awebb, jbowman, ikhan
  *
  */
 public class ChannelReader extends AbstractReader {

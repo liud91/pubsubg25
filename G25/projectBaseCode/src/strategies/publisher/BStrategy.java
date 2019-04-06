@@ -5,7 +5,11 @@ import pubSubServer.ChannelDiscovery;
 import events.EventMessage;
 import events.AbstractEvent;
 
-
+/**
+ * concrete implementation of AbstractStrategy
+ * @author dmaclean, dliu, awebb, jbowman, ikhan
+ *
+ */
 class BStrategy extends AbstractStrategy {
 
 	/**

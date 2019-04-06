@@ -2,7 +2,7 @@ package states.subscriber;
 import events.AbstractEvent;
 /**
  * 
- * @author dmaclean, dliu
+ * @author dmaclean, dliu, awebb, jbowman, ikhan
  *
  */
 class DefaultState extends AbstractState {
