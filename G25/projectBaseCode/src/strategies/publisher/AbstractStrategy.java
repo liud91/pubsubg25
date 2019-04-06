@@ -1,6 +1,7 @@
 package strategies.publisher;
 import events.EventType;
 import events.AbstractEvent;
+import java.util.List;
 
 /**
  * @author kkontog, ktsiouni, mgrigori 
@@ -45,7 +46,7 @@ public abstract class AbstractStrategy {
 	 */
 	public abstract void doPublish(int publisherId);
 	
-	private List<String> getValidChannels() {
+	public List<String> getValidChannels() {
         List<String> channels = ChannelDiscovery.getInstance().listChannelNames();
         int i = 0;
         for (String channel : channels) {
