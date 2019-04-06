@@ -46,7 +46,7 @@ public abstract class AbstractEvent {
 	 * 
 	 * @return an object of the Class {@link EventMessage}
 	 */
-	protected EventMessage getPayload() {
+	public EventMessage getPayload() {
 		return payload;
 	}
 	
