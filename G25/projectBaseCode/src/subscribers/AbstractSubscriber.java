@@ -41,6 +41,7 @@ public abstract class AbstractSubscriber implements IEntity {
 		int random = (int) (Math.random() * 2);
 		StateName nextState = StateName.values()[random];
 		setState(nextState);
+		System.out.println("Subscriber " + id + " changes states to " state.getStateName());
 	}
 	
 	
