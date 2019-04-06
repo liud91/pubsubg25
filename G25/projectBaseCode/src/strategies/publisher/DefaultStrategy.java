@@ -13,7 +13,8 @@ class DefaultStrategy extends AbstractStrategy {
 	 * @param strategyName is the name of the publisher's associated strategy
 	 */
 	protected DefaultStrategy(StrategyName strategyName) {
-		super(strategyName);
+		super(strategyName, 2);
+		//make sure I have the right number here
 	}
 	
 	/**
