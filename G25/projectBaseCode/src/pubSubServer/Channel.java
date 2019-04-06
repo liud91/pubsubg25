@@ -69,7 +69,7 @@ class Channel extends AbstractChannel {
 		currentEvent = event;
 		for(AbstractSubscriber subscriber : subscribers) {
             if (channelAccessControl.checkIfBlocked(subscriber, channelTopic)) { 
-            	System.out.println("Subscriber " + subscriber.getId() + " is blocked on " + channelTopic);
+            	System.out.println("Subscriber " + subscriber.getId() + " does not get event as it is blocked on " + channelTopic);
             	continue; 
             	}
 			subscriber.alert(currentEvent, this.channelTopic);
