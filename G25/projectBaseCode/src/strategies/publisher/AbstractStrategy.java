@@ -49,7 +49,7 @@ public abstract class AbstractStrategy {
         List<String> channels = ChannelDiscovery.getInstance().listChannelNames();
         int i = 0;
         for (String channel : channels) {
-            if ((channel.hashCode() % numberOfStrategies) != strategyDefinition) {
+            if ((channel.length() % numberOfStrategies) != strategyDefinition) {
                 channels.remove(i);
             }
             i++;
