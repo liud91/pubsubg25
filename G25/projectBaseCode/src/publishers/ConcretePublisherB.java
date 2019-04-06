@@ -12,7 +12,7 @@ import strategies.publisher.StrategyFactory;
  * implementing the IPublisher interface. Of course the publish 
  * methods could have far more interesting logics a
  */
-public class ConcretePublisher extends AbstractPublisher {
+public class ConcretePublisherB extends AbstractPublisher {
 
 	
 	
@@ -22,7 +22,7 @@ public class ConcretePublisher extends AbstractPublisher {
 	 * @param concreteStrategy attaches a concreteStrategy generated from the {@link StrategyFactory#createStrategy(strategies.publisher.StrategyName)}
 	 * method
 	 */
-	protected ConcretePublisher(AbstractStrategy concreteStrategy, long publisherId) {
+	protected ConcretePublisherB(AbstractStrategy concreteStrategy, long publisherId) {
 		this.publishingStrategy = concreteStrategy;
 		this.id = publisherId;
 	}
