@@ -14,7 +14,8 @@ class BState extends AbstractState {
 		super(stateName);
 	}
 	
-	public void handleEvent(AbstractEvent event, String channelName) {
+	public void handleEvent(AbstractEvent event, String channelName, long subId) {
+        System.out.println("Subscriber " + subId + " receives event " + event.getEventId() + " and handles it at state B");
 	}
 
 }

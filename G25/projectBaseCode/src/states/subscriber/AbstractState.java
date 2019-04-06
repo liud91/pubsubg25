@@ -21,7 +21,7 @@ public abstract class AbstractState {
 	 * @param event is the event to be handled
 	 * @param channelName is the channel to which the event is being posted
 	 */
-	public abstract void handleEvent(AbstractEvent event, String channelName);
+	public abstract void handleEvent(AbstractEvent event, String channelName, long subId);
 	
 	/**
 	 * getter for state name

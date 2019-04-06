@@ -19,7 +19,8 @@ class AState extends AbstractState {
 	 * @param event is the event to be handled
 	 * @param channelName is the channel to which the event is being posted
 	 */
-	public void handleEvent(AbstractEvent event, String channelName) {
+	public void handleEvent(AbstractEvent event, String channelName, long subId) {
+        System.out.println("Subscriber " + subId + " receives event " + event.getEventId() + " and handles it at state A");
 	}
 
 }
