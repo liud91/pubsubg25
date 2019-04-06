@@ -55,7 +55,7 @@ public abstract class AbstractStrategy {
                 validChannels.add(channel);
             }
         }
-        return channels;
+        return validChannels;
     }
 	
 	
