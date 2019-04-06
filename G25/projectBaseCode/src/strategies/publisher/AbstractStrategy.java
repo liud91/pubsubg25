@@ -53,7 +53,7 @@ public abstract class AbstractStrategy {
         List<String> channels = ChannelDiscovery.getInstance().listChannelNames();
         List<String> validChannels = new ArrayList<>();
         for (String channel : channels) {
-            if ((channel.length() % numberOfStrategies) != strategyDefinition) {
+            if ((channel.length() % numberOfStrategies) == strategyDefinition) {
                 validChannels.add(channel);
             }
         }
