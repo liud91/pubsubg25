@@ -200,7 +200,7 @@ public class Orchestration {
             listOfPublishers.add(newPub);
 //            System.out.println("Publisher " + newPub.getId() + " created");
 //            System.out.println("Publisher " + newPub.getId() + " has strategy " + StrategyName.values()[strategyData.get(i)[1]]);
-            System.out.printf("Publisher %2d created and is on state %s\n", newPub.getId(), StrategyName.values()[strategyData.get(i)[1]]);
+            System.out.printf("Publisher %3d created and is on state %s\n", newPub.getId(), StrategyName.values()[strategyData.get(i)[1]]);
         }
         System.out.println("Publisher Creation Complete.\n");
         
@@ -224,7 +224,7 @@ public class Orchestration {
             listOfSubscribers.add(newSub);
 //            System.out.println("Subscriber " + newSub.getId() + " created");
 //            System.out.println("Subscriber " + newSub.getId() + " is on state " + StateName.values()[stateData.get(i)[1]]);
-            System.out.printf("Subscriber %2d created and is on state %s\n", newSub.getId(), StateName.values()[stateData.get(i)[1]]);        }
+            System.out.printf("Subscriber %3d created and is on state %s\n", newSub.getId(), StateName.values()[stateData.get(i)[1]]);        }
         System.out.println("Subscriber Creation Complete.\n");
 		return listOfSubscribers;
 	}	
