@@ -21,14 +21,14 @@ public class EventMessage {
 	/**
 	 * @return the String containing the Event.header data
 	 */
-	protected String getHeader() {
+	public String getHeader() {
 		return header;
 	}
 
 	/**
 	 * @return the String containing the Event.body data
 	 */
-	protected String getBody() {
+	public String getBody() {
 		return body;
 	}
 	
