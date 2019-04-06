@@ -1,8 +1,10 @@
 package strategies.publisher;
-import events.EventType;
-import events.AbstractEvent;
-import pubSubServer.ChannelDiscovery;
+import java.util.ArrayList;
 import java.util.List;
+
+import events.AbstractEvent;
+import events.EventType;
+import pubSubServer.ChannelDiscovery;
 
 /**
  * @author kkontog, ktsiouni, mgrigori 
