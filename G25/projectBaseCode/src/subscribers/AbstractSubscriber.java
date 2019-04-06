@@ -36,9 +36,9 @@ public abstract class AbstractSubscriber implements IEntity {
 	 */
 	
 	public void alert(AbstractEvent event, String channelName) {
-		state.handleEvent(event, channelName, id);
+		state.handleEvent(event, channelName, id); //state gets and handles event
 		int random = (int) (Math.random() * 2);
-		StateName nextState = StateName.values()[random];
+		StateName nextState = StateName.values()[random]; //state is then randomly assigned a new state
 		setState(nextState);
 		System.out.println("Subscriber " + id + " changes states to " + state.getStateName());
 	}

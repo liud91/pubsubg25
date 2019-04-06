@@ -48,7 +48,10 @@ public abstract class AbstractStrategy {
 	 * @param publisherId publisherId is the publisher's ID with which the event will be associated
 	 */
 	public abstract void doPublish(int publisherId);
-	
+	/**
+	 * method to be used to retrieve a list of valid channels that can be used when publishing
+	 * @return list string of valid channels
+	 */
 	public List<String> getValidChannels() {
         List<String> channels = ChannelDiscovery.getInstance().listChannelNames();
         List<String> validChannels = new ArrayList<>();
