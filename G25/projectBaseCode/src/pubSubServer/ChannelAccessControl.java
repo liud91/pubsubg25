@@ -42,8 +42,12 @@ public class ChannelAccessControl {
 	 */
 	public void blockSubscriber(AbstractSubscriber subscriber, String channelName) {
 		
-		List<AbstractSubscriber> blockedSubscribers = blackList.getOrDefault(channelName, new ArrayList<AbstractSubscriber>());
-		blockedSubscribers.add(subscriber);
+		List<AbstractSubscriber> blockedSubscribers = blackList.get(channelName);
+		if (blockedSubscribers == null) {
+            blockedSubscribers = new ArrayList<>();
+        }
+        if (blockedSubscribers.contains(subscriber)) { return; }
+        blockedSubscribers.add(subscriber);
 		blackList.put(channelName, blockedSubscribers);
 	}
 
