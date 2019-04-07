@@ -57,15 +57,19 @@ public class Orchestration {
                     } else {
                         publishEvent(instruction.get(1), listOfPublishers);
                     }
+                    System.out.print("\n");
                     break;
                 case "SUB" :
                     subToChannel(instruction.get(1), instruction.get(2), listOfSubscribers); 
+                    System.out.print("\n");
                     break;
                 case "BLOCK" :
                     blockUser(instruction.get(1), instruction.get(2), listOfSubscribers);
+                    System.out.print("\n");
                     break;
                 case "UNBLOCK" :
                     unBlockUser(instruction.get(1), instruction.get(2), listOfSubscribers);
+                    System.out.print("\n");
                     break;
             }
         }
