@@ -17,7 +17,6 @@ class DefaultStrategy extends AbstractStrategy {
 	 */
 	protected DefaultStrategy(StrategyName strategyName) {
 		super(strategyName, 2);
-		//make sure I have the right number here
 	}
 	
 	/**

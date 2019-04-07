@@ -54,9 +54,9 @@ public abstract class AbstractStrategy {
 	 */
 	public List<String> getValidChannels() {
         List<String> channels = ChannelDiscovery.getInstance().listChannelNames();
-        List<String> validChannels = new ArrayList<>();
-        for (String channel : channels) {
-            if ((channel.length() % numberOfStrategies) == strategyDefinition) {
+        List<String> validChannels = new ArrayList<>(); 
+        for (String channel : channels) {                                           //classify channels by length of name, and publish to                                 
+            if ((channel.length() % numberOfStrategies) == strategyDefinition) {    // one set of channels to simulate a publishing strategy 
                 validChannels.add(channel);
             }
         }
